@@ -21,8 +21,7 @@ const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: *Elephant = null, // Hmm... tail needs something...
-    visited: bool = false,
+    tail: ?*Elephant = null, // Hmm... tail needs something...
 };
 
 pub fn main() void {
@@ -44,15 +43,12 @@ pub fn main() void {
 fn visitElephants(first_elephant: *Elephant) void {
     var e = first_elephant;
 
-    while (!e.visited) {
+    while (true) {
         std.debug.print("Elephant {u}. ", .{e.letter});
-        e.visited = true;
-
         // We should stop once we encounter a tail that
         // does NOT point to another element. What can
         // we put here to make that happen?
-        if (e.tail == null) ???;
-
+        if (e.tail == null) break;
         e = e.tail.?;
     }
 }

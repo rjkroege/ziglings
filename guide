@@ -1,0 +1,5 @@
+Edit X:ziglings/\+Errors: 1,$d
+X:ziglings/.*\.zig: w
+
+zig build
+
